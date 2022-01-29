@@ -6,7 +6,7 @@
 
 
 int jStck = A0;
-int x = 0;
+int x = 0, speed = 0;
 
 class Display {
     public: 
@@ -28,11 +28,17 @@ void setup(){
 
 void loop(){
     x = analogRead(jStck);
+    speed = x < 1024 / 2 ? map(x, 0, 512, 0, 2048) : map(1024 - x, 0, 512, 0, 2048);
+    if(x < 1024 / 2){
+        Serial.println(x);
+    }
+    
     x = map(x, 0, 1024, -1, 2);
     
     disp.move(x);
 
     disp.update();
+    delay(speed);
 }
 
 void Display::init(){
@@ -50,6 +56,7 @@ void Display::init(){
 }
 void Display::update(){
     if(cur != last){
+        cur = cur == -1 ? 11 : cur == 12 ? 0 : cur;
         if(cur > 7){
             digitalWrite(leds[cur-8], HIGH);
             if(last<=7){
