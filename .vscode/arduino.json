@@ -1,5 +1,5 @@
 {
     "board": "arduino:avr:uno",
     "port": "COM5",
-    "sketch": "tests\\buzzer\\buzzer.ino"
+    "sketch": "tests\\RFID\\index.ino"
 }
