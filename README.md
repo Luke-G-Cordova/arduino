@@ -1,2 +1,2 @@
 # arduino
-arduino tests
+small arduino and raspberry pi projects
