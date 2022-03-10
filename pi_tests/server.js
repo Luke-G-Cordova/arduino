@@ -20,20 +20,16 @@ app.get('/', (req, res) => {
     res.sendFile('./public/index.html');
 });
 app.post('/', timeout, (req, res) => {
-    // if(relay.readSync() === 0){
-    //     relay.writeSync(1);
-    // }
-    console.log('start');
+    
+    // rotate motor to open door here
     time = 5;
     res.json({
         time_left: time
     });
     setTimeout(() => {
-        console.log('end');
         time = 0;
-        // relay.writeSync(0);
+        // rotate motor to close door here
     }, 5000);
-    
 });
 
 const PORT = 5252;
